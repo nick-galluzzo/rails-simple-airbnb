@@ -6,9 +6,13 @@ class FlatsController < ApplicationController
 
   def new
     @flat = Flat.new
+
+    redirect_to flat_path(@flat)
   end
 
   def create
+    @flat = Flat.new(flat_params)
+    @flat.save
   end
 
   def edit
@@ -18,15 +22,19 @@ class FlatsController < ApplicationController
   end
 
   def update
+    @flat.update(params[:flat])
+
+    redirect_to flat_path(@flat)
   end
 
   def destroy
+    @flat.destroy
   end
 
   private
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
+    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests, :photo_url)
   end
 
   def find_flat

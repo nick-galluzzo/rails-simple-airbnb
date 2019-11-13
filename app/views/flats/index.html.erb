@@ -1,0 +1,26 @@
+<h1 class='text-center mb-3'>Flats</h1>
+<div class="container">
+    <% @flats.each do |flat| %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%= flat.photo_url %>" class="card-img-top img-thumbnail mh-50" alt="..." >
+      <div class="card-body">
+        <h5 class="card-title"><%= flat.name %></h5>
+        <p class="card-text"><%= flat.description %></p>
+        <p class="card-text">Address: <%= flat.address %></p>
+        <p class="card-text"><%= flat.price_per_night %></p>
+        <p class="card-text">Number of Guests: <%= flat.number_of_guests %></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+<% end %>
+</div>
+
+
+<!--
+
+t.string :name, null: false
+t.string :address, null: false
+t.text :description, null: false
+t.integer :price_per_night, null: false
+t.integer :number_of_guests
+-->
